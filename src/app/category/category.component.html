@@ -1,0 +1,20 @@
+<!-- <div *ngFor="let category of categories">
+    <h3>{{category.title}}</h3>
+    <ul class="list-group">
+        <a href="#">
+            <li class="list-group-item">{{category.name}}</li>
+        </a>
+    </ul>
+</div> -->
+
+<h3>{{title}}</h3>
+
+<ul class="list-group">
+    <li class="list-group-item active">All Categories</li>
+
+    <div *ngFor="let category of categories">
+        <a href="#">
+            <li class="list-group-item">{{category.name}}</li>
+        </a>
+    </div>
+</ul>

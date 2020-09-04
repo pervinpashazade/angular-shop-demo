@@ -1,0 +1,36 @@
+<div class="col-md-12">
+    <h3 *ngIf="products; else: noProduct">{{title}}</h3>
+</div>
+<div class="col-md-12">
+    <div class="form-group">
+        <input class="form-control" 
+            id="searchProductName"
+            placeholder="Search..."
+            [(ngModel)]="productFilter">
+        <small *ngIf="productFilter"
+        class="form-text text-muted">
+            You are looking for <strong>{{productFilter}}</strong> now
+        </small>
+    </div>
+</div>
+<ng-template #noProduct>
+    <div class="col-md-12">
+        <div class="alert alert-danger" role="alert">
+            No products found in this category
+        </div>
+    </div>
+</ng-template>
+<div class="row">
+    <div *ngFor="let product of products | productFilter : productFilter" class="card" style="width: 18rem;">
+        <img [src]="product.imgUrl" style="width: 290px; height: 195px; object-fit: cover;" class="card-img-top"
+            alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{product.name | uppercase}} {{product.price}} AZN</h5>
+            <p class="card-text">
+                {{product.description}}
+            </p>
+            <a (click)="addToCart(product)" class="btn btn-primary">Add to Card</a>
+        </div>
+    </div>
+
+</div>
